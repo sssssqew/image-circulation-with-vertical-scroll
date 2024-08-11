@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Nanum+Myeongjo&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sigmar+One&display=swap');
+
+:root{
+    --main-bg-color: #e8e8e1;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Playfair Display", serif;
+    text-decoration: none;
+    list-style: none;
+}
+a{
+    color: #191919;
+}
+html, body{
+    width: 100%;
+    background-color: var(--main-bg-color);
+    overscroll-behavior: none;
+}
+.menu-tog{
+    position: fixed;
+    top: 3%; 
+    right: 2%;
+    width: 25px;
+    height: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 3;
+    mix-blend-mode: difference;
+    /* background-color: red;
+    border: 1px solid red; */
+}
+.menu-tog span{
+    position: relative;
+    width: 100%; height: 2px;
+    background-color: white;
+    transition: .5s;
+    transform-origin: center;
+}
+.menu-tog.active span:nth-child(1){
+    position: absolute;
+    transform: rotate(45deg);
+}
+.menu-tog.active span:nth-child(2){
+    position: absolute;
+    transform: rotate(-45deg);
+}
+.header{
+    position: fixed;
+    top: 2%; left: 2%;
+    width: 96%;
+    z-index: 2;
+    mix-blend-mode: difference;
+    color: #fff;
+    text-transform: uppercase;
+}
+h1{
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    letter-spacing: 0px;
+}
+.info-text{
+    font-size: 15px;
+    line-height: 20px;
+}
+.wrap{
+    /* border: 1px solid red; */
+    position: relative;
+    display: block;
+    line-height: auto; /* ? */
+    overflow: hidden; /* wrap 밖을 벗어난 글자나 이미지를 안보이도록 가림 */
+    transition: .5s;
+    will-change: transform;
+}
+.wrap h1, .wrap .img{
+    transform: translateY(100%); /* wrap 바깥으로 글자나 이미지가 벗어나도록 아래로 이동시킴 */
+    transition: .5s;
+    will-change: transform;
+}
+.wrap.active h1, .wrap.active .img{
+    transform: translateY(0); /* wrap 바깥으로 글자나 이미지가 벗어나도록 아래로 이동시킴 */
+}
+.menu{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--main-bg-color);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none; /* 메뉴의 링크에 대한 클릭 비활성화 */
+    transition: .5s;
+}
+.menu.active{
+    pointer-events: all; /* 메뉴의 링크에 대한 클릭 활성화 */
+    opacity: 1;
+}
+.links{
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    height: 200px;
+    /* border: 1px solid red; */
+}
+.links ul{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+.menu-wrap{
+    position: relative;
+    overflow: hidden;
+    /* border: 3px solid yellow; */
+}
+.menu-wrap a{
+    /* border: 1px solid green; */
+    display: block;
+    font-size: 40px;
+    transform: translateY(100%);
+    transition: .5s;
+}
+.menu-wrap.active a{
+    transform: translateY(0);
+}
+.menu-wrap span{
+    font-size: 12px;
+}
+
+main{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: 0; /* 메뉴나 헤더보다 더 뒤쪽에 이미지 디스플레이 */
+    /* border: 3px solid red; */
+}
+.scrollable{
+    position: absolute;
+    width: 100%;
+    left: 0; top: 0;
+    will-change: transform;
+}
+.content{
+    position: relative;
+    width: 100%;
+    /* border: 3px solid green; */
+}
+section{
+    position: relative;
+    height: 50vh;
+    /* border: 1px solid blue; */
+}
+.img-1{
+    position: absolute;
+    top: 5%; left: 2%;
+    width: 40%;
+    /* border: 1px solid yellow; */
+    height: 90%;
+}
+.proj-info-1{
+    position: absolute;
+    left: 44%;
+    bottom: 5%;
+    text-align: left;
+    /* border: 1px solid red; */
+}
+
+.img-2{
+    position: absolute;
+    top: 20%; right: 2%;
+    width: 30%;
+    /* border: 1px solid yellow; */
+    height: 70%;
+}
+.proj-info-2{
+    position: absolute;
+    right: 34%;
+    bottom: 10%;
+    text-align: right;
+    /* border: 1px solid red; */
+}
+
+.img-3{
+    position: absolute;
+    top: 10%; right: 2%;
+    width: 20%;
+    /* border: 1px solid yellow; */
+    height: 80%;
+}
+.proj-info-3{
+    position: absolute;
+    right: 24%;
+    bottom: 10%;
+    text-align: right;
+    /* border: 1px solid red; */
+}
+.img{
+    position: absolute; /* img-1, img-2, img-3 기준 */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(20%) sepia(20%); /* 이미지에 세피아 톤 (어두운 갈색)을 적용 */
+
+}
